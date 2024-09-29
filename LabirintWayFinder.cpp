@@ -18,13 +18,13 @@ using namespace std;
 
 // If you think something went wrong, then use ASCII fork
 #define BORDER  L"██" //"##"
-#define FINISH  L"ST"
-#define START   L"FN"
+#define START   L"ST"
+#define FINISH  L"FN"
 
-#define WHITE   230, 230, 230
-#define RED     255,  50,  50
-#define GREEN    50, 255,  50
-#define BLUE     80,  80, 255
+#define BORDER_COLOR    230, 230, 230
+#define FINISH_COLOR    255,  50,  50
+#define START_COLOR      50, 255,  50
+#define ROAD_COLOR       80,  80, 255
 
 #pragma endregion
 
@@ -111,13 +111,13 @@ void getData() {
 void drawLabirint() {
     for (int y = 0; y < lsize.y; y++) {
         for (int x = 0; x < lsize.x; x++) {
-            if (Labirint[x][y] == '#') wcout << color(WHITE) << BORDER;
+            if (Labirint[x][y] == '#') wcout << color(BORDER_COLOR) << BORDER;
             if (Labirint[x][y] == ' ') {
-                if (DistaceMap[x][y] != -1) wcout << color(BLUE) << setw(2) << DistaceMap[x][y] % 100;
-                else wcout << color(WHITE) << "  ";
+                if (DistaceMap[x][y] != -1) wcout << color(ROAD_COLOR) << setw(2) << DistaceMap[x][y] % 100;
+                else wcout << color(BORDER_COLOR) << "  ";
             }
-            if (Labirint[x][y] == 'S') wcout << color(GREEN) << START;
-            if (Labirint[x][y] == 'F') wcout << color(RED) << FINISH;
+            if (Labirint[x][y] == 'S') wcout << color(START_COLOR) << START;
+            if (Labirint[x][y] == 'F') wcout << color(FINISH_COLOR) << FINISH;
         }
         wcout << endl;
     }
@@ -155,13 +155,13 @@ void drawBestWay() {
 
     for (int y = 0; y < lsize.y; y++) {
         for (int x = 0; x < lsize.x; x++) {
-            if (Labirint[x][y] == '#') wcout << color(WHITE) << BORDER;
+            if (Labirint[x][y] == '#') wcout << color(BORDER_COLOR) << BORDER;
             if (Labirint[x][y] == ' ') {
-                if (BestWayMap[x][y] != -1) wcout << color(BLUE) << setw(2) << BestWayMap[x][y] % 100;
-                else wcout << color(WHITE) << "  ";
+                if (BestWayMap[x][y] != -1) wcout << color(ROAD_COLOR) << setw(2) << BestWayMap[x][y] % 100;
+                else wcout << color(BORDER_COLOR) << "  ";
             }
-            if (Labirint[x][y] == 'S') wcout << color(GREEN) << START;
-            if (Labirint[x][y] == 'F') wcout << color(RED) << FINISH;
+            if (Labirint[x][y] == 'S') wcout << color(START_COLOR) << START;
+            if (Labirint[x][y] == 'F') wcout << color(FINISH_COLOR) << FINISH;
         }
         wcout << endl;
     }
